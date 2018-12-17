@@ -1,22 +1,16 @@
 """
-Method: supervised learning / multiple linear regression.
+Method: supervised learning / linear regression.
 
 Dataset: CSV exported from Facebook Ads Reporting.
 
-Criterion variables:
-- CPA
+Criterion variable:
+- Budget
+
+Predictor variable:
 - Reach
-- Acquisitions
 
-Predictor variables:
-- Budget spend
-- Age
-- Geolocation
-- Ad (creative = img, video, text.)
-- Device
-- Platform
-
-Problem:
+Problem: if I spend this $X amount of money for this age group,
+how many people can I reach via my ads?
 
 """
 import matplotlib.pyplot as plot
@@ -25,6 +19,7 @@ import pandas as pd
 from sklearn import metrics
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
+
 
 # load dataset
 dataset = pd.DataFrame.from_csv("fb_ads_2018.csv")
@@ -46,7 +41,7 @@ X = dataset[['Amount Spent (USD)']]
 y = dataset['Reach']
 
 # training and test dataset (30% test)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.5, random_state=1)
 
 # training algorithm
 regressor = LinearRegression()
@@ -76,7 +71,7 @@ new_entry = {
 new_dataset = pd.DataFrame(new_entry, index=[0])
 new_pred = regressor.predict(new_dataset)
 # correction of 20%
-predicted_reach = int(new_pred[0]) + int(new_pred[0]) * 0.2
+predicted_reach = int(new_pred[0])
 print("Prediction: 25-34    35      {}".format(predicted_reach))
 print("=================================================")
 
