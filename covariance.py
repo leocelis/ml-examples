@@ -4,7 +4,8 @@ import pandas as pd
 from numpy import corrcoef
 
 # load dataset
-dataset = pd.read_csv("covariance.csv", index_col=None, usecols=['Clicks (All)', 'Amount Spent (USD)', 'Reach'])
+columns = ['Clicks (All)', 'Amount Spent (USD)', 'Reach', 'Results', 'Impressions', 'Frequency']
+dataset = pd.read_csv("covariance.csv", index_col=None, usecols=columns)
 
 # correlation coeficient
 Sigma = corrcoef(dataset['Clicks (All)'], dataset.Reach)[1, 0]
