@@ -1,6 +1,6 @@
 Predictions
 =
-Machine Learning for Advertising
+A.I. Machine Learning
 
 Installation
 -
