@@ -1,6 +1,5 @@
-Predictions
+A.I. Examples
 =
-A.I. Machine Learning
 
 Installation
 -
